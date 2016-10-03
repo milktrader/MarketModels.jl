@@ -14,10 +14,10 @@ GMMy = GMM(3, Cy, method=:kmeans, nInit=50, nIter=10)
 MMy  = MixtureModel(GMMy)
 
 
-function rday() 
-    rand(MMd, 13089)
+function rday(n::Int=13089) 
+    rand(MMd, n)
 end
 
-function ryear()  
-    rand(MMy, 51)
+function ryear(n::Int=51)  
+    rand(MMy, n)
 end

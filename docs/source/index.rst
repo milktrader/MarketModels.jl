@@ -14,3 +14,6 @@ Contents
 
    getting_started
    motivation
+   methodology
+   example
+   improve
