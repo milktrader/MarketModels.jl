@@ -1,24 +1,32 @@
 A Smarter Model
 ===============
 
-There are many things we can do to improve out model. We can perhaps train it better. That won't hurt to do, 
-but there will be a limit to its benefit and it will be realized fairy quickly. 
+There are many things we can do to improve out model. Perhaps a better fit would help. Maybe incorporate
+some classic time series tools such as arima and garch to improve realistic random draws. Or we could
+even define market states based on technical indicators, and create models for each state.
 
-In classical time series analysis, there are tools we can use to determine serial correlation as well as
-conditional heteroskedasticity. Our model does not __yet__ incoroprate these important tools. So far, we've
-simply stepped away from a simplistic Gaussian model of returns to a more realistic mixed model of Gaussian
-returns.
+More Training
+-------------
 
-Let's take serial correlation first. This will involve some persuading of the random draw mechanism to take
-samples that are within the range of serial correlation that we observe. To understand this component, we'll
-need to create a separate model of serial correlation, and then find a way for it to pursuade the selection
-of returns from our modeled distribution.
+We can perhaps train our model better. Optimization is outside the scope of this discussion, but at the very
+least some effort can be made in this area.
 
-To create this model, we will use ``arima`` methods found in the TimeModels package.
+Classic Tools
+-------------
 
-Besides acknowledging serial correlation, it's also important to account for volatility spikes that often happen
-in time series data. This is a separate model and will involve ``garch`` methods, also found in the TimeModels
-package.
+In classical time series analysis, there are several tools we can use to overlay on our basic model. The two most
+common tools include ARIMA and GARCH. ARIMA measures serial correlation while GARCH is used to identify volatility
+spikes.
 
-While the serial correlation model will attempt to persuade local draws, the garch model will pursuade the random
-selection algorithm to take periodic trips to the fat tails regions.
+How these tools are integreated with our basic model is left to the user, but clearly this will involve some persuading 
+of the random draw mechanism to take samples that are within the range of the serial correlation that we observe or
+to take periodic trips to the fat tails regions.
+
+Market States
+-------------
+
+Many market observers like to classify markets as with being bullish or bearish. Bullish indicates that there
+are overwhelmingly more positive returns, and bearish is the opposite.
+
+A possible way to model markets is to create separate models for each state, and to take random draws from
+the model that corresponds to the current market state.
